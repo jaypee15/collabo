@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=collabo
+POSTGRES_USER=hnaEnWZtNLBQWJxhNszlkXhbADJsOISe
+POSTGRES_PASSWORD=RH37XEsAxqKCxgfWUOiVeCWvF3ES5wYXMJu8mK7xwIUt2tJ8Z4tTqLhHBGUKMZ8r
