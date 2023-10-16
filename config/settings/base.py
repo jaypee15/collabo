@@ -242,6 +242,7 @@ MANAGERS = ADMINS
 # Force the `admin` sign in process to go through the `django-allauth` workflow
 DJANGO_ADMIN_FORCE_ALLAUTH = env.bool("DJANGO_ADMIN_FORCE_ALLAUTH", default=False)
 
+
 # LOGGING
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#logging
@@ -320,6 +321,10 @@ ACCOUNT_FORMS = {"signup": "collabo.users.forms.UserSignupForm"}
 SOCIALACCOUNT_ADAPTER = "collabo.users.adapters.SocialAccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/forms.html
 SOCIALACCOUNT_FORMS = {"signup": "collabo.users.forms.UserSocialSignupForm"}
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_SESSION_REMEMBER = True
+LOGIN_REDIRECT_URL = "projects:app"
+ACCOUNT_LOGOUT_REDIRECT = "projects:app"
 # django-compressor
 # ------------------------------------------------------------------------------
 # https://django-compressor.readthedocs.io/en/latest/quickstart/#installation

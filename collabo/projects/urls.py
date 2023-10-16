@@ -8,7 +8,7 @@ from .views import (
 
 app_name = "projects"
 urlpatterns = [
-    path("", view=project_list, name="project_list"),
+    path("", view=project_list, name="app"),
     path("search/", view=search, name="search"),
 
    

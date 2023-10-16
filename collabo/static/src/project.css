@@ -2672,10 +2672,6 @@ input:checked + .toggle-bg {
     display: none;
   }
 
-  .md\:h-screen {
-    height: 100vh;
-  }
-
   .md\:w-1\/3 {
     width: 33.333333%;
   }
