@@ -609,7 +609,7 @@
                     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-2 h-12" >{{project.description}}</p>
                     <div class="flex items-center justify-between">
                       
-                      <a href="#" class="inline-flex items-center px-2 py-2 text-sm font-medium text-center text-white {{project.project_status|status_color}} rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                      <a href="#" class="inline-flex items-center px-2 py-2 text-sm font-medium text-center text-white {{project.project_status|status_color}} rounded-lg hover:{{project.project_status|hover_status_color}}  focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         {{project.project_status}}    
                     </a>
                       

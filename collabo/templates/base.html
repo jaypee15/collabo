@@ -147,7 +147,7 @@
           </a>
           <form action="#" method="" class="hidden md:block md:pl-2">
             <label for="topbar-search" class="sr-only">Search</label>
-            <div class="relative md:w-64 md:w-96">
+            <div class="relative md:w-64">
               <div
                 class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
               >
@@ -213,7 +213,7 @@
           </button>
           <!-- Dropdown menu -->
           <div
-            class="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:divide-gray-600 dark:bg-gray-700 rounded-xl"
+            class="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white divide-y divide-gray-100 shadow-lg dark:divide-gray-600 dark:bg-gray-700 rounded-xl"
             id="notification-dropdown"
           >
             <div
@@ -498,7 +498,7 @@
           </button>
           <!-- Dropdown menu -->
           <div
-            class="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
+            class="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white divide-y divide-gray-100 shadow-lg dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
             id="apps-dropdown"
           >
             <div
@@ -712,7 +712,7 @@
           </button>
           <!-- Dropdown menu -->
           <div
-            class="hidden z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
+            class="hidden z-50 my-4 w-56 text-base list-none bg-white divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
             id="dropdown"
           >
             <div class="py-3 px-4">
@@ -858,20 +858,20 @@
  
 
 
-  <div class="container">
-    {% if messages %}
-      {% for message in messages %}
-        <div class="alert alert-dismissible {% if message.tags %}alert-{{ message.tags }}{% endif %}">
-          {{ message }}
-          <button type="button"
-                  class="btn-close"
-                  data-bs-dismiss="alert"
-                  aria-label="Close"></button>
-        </div>
-      {% endfor %}
-    {% endif %}
+    <div class="container mx-auto mt-4">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="relative rounded-md bg-blue-100 text-blue-800 p-4 mb-4">
+            <div class="flex items-center justify-between">
+              <p>{{ message }}</p>
+            
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    
     {% block content %}
-      <p>Use this document as a way to quick start any new project.</p>
+      
     {% endblock content %}
   </div>
   <!-- /container -->
