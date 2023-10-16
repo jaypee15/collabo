@@ -20,7 +20,7 @@ class User(AbstractUser):
     first_name = None  # type: ignore
     last_name = None  # type: ignore
     email = EmailField(_("email address"), unique=True)
-    username = CharField(_("Username of User"), blank=True)
+    username = CharField(_("Username of User"), max_length=100, blank=True)
     bio = TextField(_("user bio"), blank=True)
     website = TextField(_("link to user's personal website"), blank=True)
     twitter = CharField(_("link to user's twitter profile"), max_length=100, blank=True)
