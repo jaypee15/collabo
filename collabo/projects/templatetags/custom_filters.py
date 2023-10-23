@@ -27,3 +27,16 @@ def hover_status_color(status):
         'Other': 'bg-purple-400',
     }
     return color_mapping.get(status, 'bg-gray-200')
+
+@register.filter
+def text_status_color(status):
+    color_mapping = {
+        'Planning': 'text-sky-400',
+        'In Progress': 'text-green-300',
+        'On Hold': 'text-yellow-300',
+        'Completed': 'text-blue-700',
+        'Canceled': 'text-red-300',
+        'Archived': 'text-gray-300',
+        'Other': 'text-purple-300',
+    }
+    return color_mapping.get(status, 'bg-gray-200')

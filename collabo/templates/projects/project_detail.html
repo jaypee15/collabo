@@ -601,71 +601,54 @@
  
 
     <div class="max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-        <h1 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Project Title</h1>
+        <h1 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">{{project.title}}</h1>
         
         <!-- Project Status -->
-        <p class="text-gray-600 dark:text-gray-400 mb-4">Project Status: <span class="text-green-700 dark:text-blue-600 font-semibold">In Progress</span></p>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">Project Status: <span class="{{project.project_status|text_status_color}} dark:text-blue-600 font-semibold">{{project.project_status}}</span></p>
         
         <!-- Skills Required -->
         <div class="mb-4">
             <p class="text-gray-600 dark:text-gray-400 inline">Skills Required:</p>
-            <span class="bg-blue-100 text-blue-500 px-2 py-1 rounded-full text-xs dark:text-white ml-2">Skill 1</span>
-            <span class="bg-blue-100 text-blue-500 px-2 py-1 rounded-full text-xs dark:text-white ml-2">Skill 2</span>
-            <span class="bg-blue-100 text-blue-500 px-2 py-1 rounded-full text-xs dark:text-white ml-2">Skill 3</span>
+            {% for skill in project.skills_required.all %}
+            <span class="bg-blue-100 text-blue-500 px-2 py-1 rounded-full text-xs dark:text-white ml-2">{{skill}}</span>
+            {% endfor %}
         </div>
         
+
+        
         <!-- Project Category -->
-        <p class="text-gray-600 dark:text-gray-400 mb-4">Project Category: Web Development</p>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">Project Category: {{project.category}}</p>
         
         <!-- Project Tags -->
         <div class="mb-4">
             <p class="text-gray-600 dark:text-gray-400 inline">Project Tags:</p>
-            <span class="bg-blue-100 text-blue-500 px-2 py-1 rounded-full text-xs dark:text-white ml-2">Frontend</span>
-            <span class="bg-blue-100 text-blue-500 px-2 py-1 rounded-full text-xs dark:text-white ml-2">Backend</span>
-            <span class="bg-blue-100 text-blue-500 px-2 py-1 rounded-full text-xs dark:text-white ml-2">Mobile App</span>
+            {%for tag in project.tags.all%}
+            <span class="bg-blue-100 text-blue-500 px-2 py-1 rounded-full text-xs dark:text-white ml-2">{{tag}}</span>
+            {% endfor %}           
         </div>
         
         <!-- Start and End Dates -->
-        <p class="text-gray-600 dark:text-gray-400 mb-4">Start Date: 2023-10-01</p>
-        <p class="text-gray-600 dark:text-gray-400 mb-4">End Date: 2023-12-31</p>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">Start Date: {{project.start_date}}</p>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">End Date: {{project.end_date}}</p>
         
         <!-- Project Creator -->
-        <p class="text-gray-600 dark:text-gray-400 mb-4">Project Creator: John Doe</p>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">Project Creator:<a href="{{project.created_by.get_absolute_url}}" class="text-blue-500 dark:text-blue-300 hover:underline ml-2">@{{project.created_by.username}}</a></p>
         
         <!-- Collaborators -->
         <p class="text-gray-600 dark:text-gray-400 mb-4">Collaborators:
-            <a href="#" class="text-blue-500 dark:text-blue-300 hover:underline ml-2">Collaborator 1</a>
-            <a href="#" class="text-blue-500 dark:text-blue-300 hover:underline ml-2">Collaborator 2</a>
+          {% for collaborator in project.collaborators.all %}
+            <a href="{{project.created_by.get_absolute_url}}" class="text-blue-500 dark:text-blue-300 hover:underline ml-2">@{{collaborator.username}}</a>
+            {% endfor %}
         </p>
-        
-        <!-- Contact Information -->
-        <p class="text-gray-600 dark:text-gray-400 mb-4">Contact: <a href="mailto:john.doe@example.com" class="text-blue-500 dark:text-blue-300 hover:underline">john.doe@example.com</a></p>
         
         <!-- Project Description -->
         <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Project Description</h2>
         <p class="text-gray-600 dark:text-gray-400">
-            This is a detailed description of the project, its goals, objectives, and the problem it aims to solve.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+            {{project.description}}
         </p>
         
         <!-- Additional Sections (Goals, Methodology, etc.) -->
-        <!-- Add Tailwind classes to these sections similarly -->
-        
-        <!-- Collaboration Opportunities -->
-        <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Collaboration Opportunities</h2>
-        <p class="text-gray-600 dark:text-gray-400">
-            You can get involved by contacting the project creator or joining the project.
-        </p>
-        
-        <!-- Related Projects -->
-        <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Related Projects</h2>
-        <p class="text-gray-600 dark:text-gray-400">
-            Explore other related projects:
-            <a href="#" class="text-blue-500 dark:text-blue-300 hover:underline ml-2">Related Project 1</a>
-            <a href="#" class="text-blue-500 dark:text-blue-300 hover:underline ml-2">Related Project 2</a>
-            <a href="#" class="text-blue-500 dark:text-blue-300 hover:underline ml-2">Related Project 3</a>
-        </p>
-        
+      
         <!-- Join Project Button -->
         <button class="bg-blue-500 text-white p-2 rounded-lg mt-4 hover:bg-blue-600">Join Project</button>
     </div>

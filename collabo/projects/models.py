@@ -200,7 +200,7 @@ class Project(models.Model):
     def __str__(self) -> str:
         return f"{self.title} by {self.created_by} at {self.created_at}"
 
-    def get_absolute_url(self):
+    def get_absolute_url(self) -> str:
          return reverse("projects:project_detail", args=[str(self.id)])
 
     def save(self, *args, **kwargs):
