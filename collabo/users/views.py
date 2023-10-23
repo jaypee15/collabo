@@ -3,18 +3,18 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import DetailView, RedirectView, UpdateView
+from django.views.generic import UpdateView, RedirectView
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 User = get_user_model()
 
+@login_required
+def user_detail(request, username):
+    User = get_user_model()
+    user = get_object_or_404(User, username=username)
+    return render(request, 'users/user_detail.html', {'user': user})
 
-class UserDetailView(LoginRequiredMixin, DetailView):
-    model = User
-    slug_field = "id"
-    slug_url_kwarg = "id"
-
-
-user_detail_view = UserDetailView.as_view()
 
 
 class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):

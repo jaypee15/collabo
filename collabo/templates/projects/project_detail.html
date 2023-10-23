@@ -637,7 +637,7 @@
         <!-- Collaborators -->
         <p class="text-gray-600 dark:text-gray-400 mb-4">Collaborators:
           {% for collaborator in project.collaborators.all %}
-            <a href="{{project.created_by.get_absolute_url}}" class="text-blue-500 dark:text-blue-300 hover:underline ml-2">@{{collaborator.username}}</a>
+            <a href="{{collaborator.get_absolute_url}}" class="text-blue-500 dark:text-blue-300 hover:underline ml-2">@{{collaborator.username}}</a>
             {% endfor %}
         </p>
         
