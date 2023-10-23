@@ -1,6 +1,8 @@
+import uuid
 from django.db  import models
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
+from django.urls import reverse
 
 
 User = settings.AUTH_USER_MODEL
@@ -178,7 +180,8 @@ class Project(models.Model):
     )
 
 
-
+    id = models.CharField(primary_key=True,
+                           default=uuid.uuid4, editable=False, max_length=36)
     title = models.CharField(_("Name of project"), max_length=200)
     description = models.TextField(_("project description"), )
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_("Project Creator"))
@@ -196,6 +199,20 @@ class Project(models.Model):
 
     def __str__(self) -> str:
         return f"{self.title} by {self.created_by} at {self.created_at}"
+
+    def get_absolute_url(self):
+         return reverse("projects:project_detail", args=[str(self.id)])
+
+    def save(self, *args, **kwargs):
+        
+        # Check if cretaor is  already a collaborator
+        if self.created_by not in self.collaborators.all():
+                self.collaborators.add(self.created_by)
+        super().save(*args,**kwargs )
+
+              
+         
+         
     
 
 

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_http_methods
 from django.db.models import Q
 
@@ -6,9 +6,7 @@ from .models import Project
 
 def project_list(request):
 
-    # Define mappping for project status to background color
   
-
     # Retrieve a list of projects from the database 
     projects = Project.objects.all()  
 
@@ -30,5 +28,15 @@ def search(request):
 
     context = {"results": results}
     return render(request, "projects/partials/search.html", context)
+
+
+def project_detail(request, pk):
+    # get project with the given pk or return 404
+    project = get_object_or_404(Project, pk=pk)
+
+    context = {"project": project}
+
+    return render(request, "projects/project_detail.html", context)
+
 
 
